@@ -1,0 +1,53 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+    <div class="container form">
+        <h4> Register Here </h4>
+        <hr><br><br>
+
+        {{ form.hidden_tag() }}
+        {{ wtf.quick_form(form) }} <!--  this method comes from {% import "bootstrap/wtf.html" as wtf %} which is added in layout.html -->
+
+    </div>
+
+{% endblock content %}
+
+<!-- old method without WTF
+{ block content %}
+    <div class="container form">
+        <h4> Register Here </h4>
+    </div>
+    <div class="container form">
+        <hr>
+        <br>
+        <form action="/register" method="post">
+            {{ form.hidden_tag() }}
+
+            <div class="form-group">
+                {{ form.name.label }}
+                {{ form.name }}
+            </div>
+            <div class="form-group">
+                {{ form.email.label }}
+                {{ form.email }}
+            </div>
+            <br>
+            <div class="form-group">
+                {{ form.submit(class='btn btn-primary') }}
+            </div>
+        </form>
+        <br>
+
+        {% if (name) and (email) %}
+
+            <p>hello {{ name }}</p>
+            <p>your email is {{ email }}</p>
+
+        {% endif %}
+
+        < !--using {{ request.form }}  we are printing request.form dictionary itself to see what this dictionary contains -- >
+
+    </div>
+{ endblock content %}
+-->
